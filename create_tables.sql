@@ -55,7 +55,7 @@ CREATE TABLE Sugestoes (
     descricao varchar(256) NOT NULL,
 
      PRIMARY KEY(id),
-     FOREIGN KEY (id) REFERENCES Usuario(cod)
+     FOREIGN KEY (id) REFERENCES Universitario(cod)
 
 );
 
