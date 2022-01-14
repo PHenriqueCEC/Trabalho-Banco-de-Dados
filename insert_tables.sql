@@ -248,6 +248,69 @@ INSERT INTO Sobremesa VALUES (
 );
 
 INSERT INTO Pedido VALUES (
-  
+  5,
+  "Preparando",
+  "20:30",  --Nao sei se essa é a entrada do tipo TIME
+  "Siri Cascudo",
+  " " --Acho que tem q ter alguma coisa pra pegar o campo endereco do universitario
+),
+
+(
+  6,
+  "Preparando",
+  "20:30",  --Nao sei se essa é a entrada do tipo TIME
+  "Siri Cascudo",
+  " " --Acho que tem q ter alguma coisa pra pegar o campo endereco do universitario
+);
+
+INSERT INTO Cupom VALUES (
+  3,
+  "Vale 10 reais",
+  "Aproveita o desconto",
+  10.00,
+  1
+),
+
+( 
+  3,
+  "Vai um desconto ai",
+  "10 Reais OFF",
+  10.00,
+  0
+),
+
+( 
+  4,
+  "Fraga o desconto",
+  "5 Reais OFF",
+  5.00,
+  1
+),
+
+( 
+  4,
+  "Aproveita ai fera",
+  "7 Reais OFF",
+  7.00,
+  1
+),
+
+( 
+  4,
+  "Pra voce tomar um café depois",
+  "5 Reais OFF",
+  7.00,
+  0
+);
+
+/* INSERT INTO RestaurantePedidoAvaliacao VALUES (
+
+
+); */
+
+INSERT INTO CategoriaPrato VALUES (
+  -- Não preenchi aqui pq talvez vamos precisar colocar mais algumas chaves na tabela Prato
 )
+
+
 

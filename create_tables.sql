@@ -152,6 +152,7 @@ CREATE TABLE Cupom (
     cod int AUTO_INCREMENT,
     nome varchar(20) NOT NULL,
     descricao varchar(20) float NOT NULL,
+    valor float NOT NULL,
     statusCupom Boolean NOT NULL,
 
     PRIMARY KEY(cod),
