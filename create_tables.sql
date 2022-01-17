@@ -1,18 +1,12 @@
+-- CREATE DATABASE IfoodRU;
+USE IfoodRU;
+
 CREATE TABLE Usuario (
-   cod int AUTO_INCREMENT, -- MySql é int ou Interger?
+   cod int AUTO_INCREMENT, 
    nome varchar(100) NOT NULL,
    email varchar(200) UNIQUE NOT NULL,
-   senha varchar(256), --Hash da senha\Senha criptografada
+   senha varchar(256), -- Hash da senha\Senha criptografada
    PRIMARY KEY (cod) 
-
-    -- Será que devemos trocar o cod por cpf???? Devemos add telefone/outros campos aqui??? 
-);
-
-INSERT INTO Usuario (
-    1,
-    "Alan Turing",
-    "alanturing@gmail.com",
-    "paidacomputacao"
 
 );
 
@@ -67,7 +61,7 @@ CREATE TABLE Endereco (
     numero int NOT NULL,
     complemento varchar(50) NOT NULL,
     cidade varchar(40) NOT NULL,
-    estado varchar(20) NOT NULL
+    estado varchar(20) NOT NULL,
 
     PRIMARY KEY(cod),
     FOREIGN KEY (cod) REFERENCES Universitario(cod)
@@ -80,17 +74,6 @@ CREATE TABLE Restaurante (
     PRIMARY KEY(id),
     FOREIGN KEY (id) REFERENCES Funcionario(cod) 
 
-);
-
-CREATE TABLE Avaliacao (
-    cod int AUTO_INCREMENT,
-    nota int NOT NULL,
-    descricao varchar(200) NOT NULL,
-
-    PRIMARY KEY(cod),
-    FOREIGN KEY (cod) REFERENCES Universitario(cod),
-    FOREIGN KEY (cod) REFERENCES RestaurantePedidoAvaliacao(cod)
-    
 );
 
 CREATE TABLE Categoria (
@@ -144,14 +127,14 @@ CREATE TABLE Pedido (
     PRIMARY KEY(cod),
     FOREIGN KEY (cod) REFERENCES Restaurante(id)
 
-    --ACHO QUE TEREMOS QUE INSERIR MAIS CHAVES ESTRANGEIRAS AQUI. 
+    /*ACHO QUE TEREMOS QUE INSERIR MAIS CHAVES ESTRANGEIRAS AQUI. */
 
 );
 
 CREATE TABLE Cupom (
     cod int AUTO_INCREMENT,
     nome varchar(20) NOT NULL,
-    descricao varchar(20) float NOT NULL,
+    descricao varchar(20) NOT NULL,
     valor float NOT NULL,
     statusCupom Boolean NOT NULL,
 
@@ -164,9 +147,20 @@ CREATE TABLE RestaurantePedidoAvaliacao (
     cod int AUTO_INCREMENT,
 
     PRIMARY KEY(cod),
-    FOREIGN KEY (cod) REFERENCES Restaurante(id)
+    FOREIGN KEY (cod) REFERENCES Restaurante(id),
     FOREIGN KEY (cod) REFERENCES Pedido(cod)
-    FOREIGN KEY (cod) REFERENCES Avaliacao(cod)
+    -- FOREIGN KEY (cod) REFERENCES Avaliacao(cod)
+);
+
+CREATE TABLE Avaliacao (
+    cod int AUTO_INCREMENT,
+    nota int NOT NULL,
+    descricao varchar(200) NOT NULL,
+
+    PRIMARY KEY(cod),
+    FOREIGN KEY (cod) REFERENCES Universitario(cod),
+    FOREIGN KEY (cod) REFERENCES RestaurantePedidoAvaliacao(cod)
+    
 );
 
 CREATE TABLE CategoriaPrato (
