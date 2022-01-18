@@ -68,14 +68,42 @@ INSERT INTO Universitario VALUES (
     6
 );
 
+INSERT INTO Restaurante VALUES (
+  1,
+  1,
+  "Siri Cascudo"
+),
+
+(
+  2,
+  2,
+  "Tudo gostoso"
+);
+
+INSERT INTO Categoria VALUES (
+  1,
+  1,
+  1,
+  "Lanches"
+),
+
+(
+  2,
+  2,
+  2,
+  "Comida brasileira"
+);
+
 INSERT INTO Funcionario VALUES (
     1,
-    3
+    3,
+    1
 ),
 
 (
     2,
-    4
+    4,
+    2
 );
 
 INSERT INTO Administrador VALUES (
@@ -141,30 +169,6 @@ INSERT INTO Endereco VALUES (
   "Fenda do Biquine",
   "TX"
 
-);
-
-INSERT INTO Restaurante VALUES (
-  1,
-  1,
-  "Siri Cascudo"
-),
-
-(
-  2,
-  2,
-  "Tudo gostoso"
-);
-
-INSERT INTO Categoria VALUES (
-  1,
-  1,
-  "Lanches"
-),
-
-(
-  2,
-  2,
-  "Comida brasileira"
 );
 
 INSERT INTO CategoriaPrato VALUES (

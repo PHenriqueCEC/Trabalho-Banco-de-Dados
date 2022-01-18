@@ -19,12 +19,34 @@ CREATE TABLE Universitario (
 
 );
 
+
+CREATE TABLE Categoria (
+    cod int AUTO_INCREMENT,
+    codRestaurante int NOT NULL,
+    nome varchar(20) NOT NULL,
+
+    PRIMARY KEY(cod)
+
+);
+
+CREATE TABLE Restaurante (
+    id int AUTO_INCREMENT,
+    codCategoria int NOT NULL,
+    nome varchar(30) NOT NULL,
+
+    PRIMARY KEY(id),
+    FOREIGN KEY (codCategoria) REFERENCES Restaurante(id)  
+
+);
+
 CREATE TABLE Funcionario (
     cod int AUTO_INCREMENT,
     codUsuario int NOT NULL,
+    codRestaurante int NOT NULL,
 
     PRIMARY KEY(cod),
-    FOREIGN KEY (codUsuario) REFERENCES Usuario(cod)
+    FOREIGN KEY (codUsuario) REFERENCES Usuario(cod),
+    FOREIGN KEY (codRestaurante) REFERENCES Restaurante(id) 
 
 );
 
@@ -71,26 +93,6 @@ CREATE TABLE Endereco (
 
     PRIMARY KEY(cod),
     FOREIGN KEY (codUsuario) REFERENCES Usuario(cod)
-);
-
-CREATE TABLE Restaurante (
-    id int AUTO_INCREMENT,
-    codUsuario int NOT NULL,
-    nome varchar(30) NOT NULL,
-
-    PRIMARY KEY(id),
-    FOREIGN KEY (codUsuario) REFERENCES Usuario(cod) 
-
-);
-
-CREATE TABLE Categoria (
-    cod int AUTO_INCREMENT,
-    codRestaurante int NOT NULL,
-    nome varchar(20) NOT NULL,
-
-    PRIMARY KEY(cod),
-    FOREIGN KEY (codRestaurante) REFERENCES Restaurante(id)
-
 );
 
 CREATE TABLE CategoriaPrato (
