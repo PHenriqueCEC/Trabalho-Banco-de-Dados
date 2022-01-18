@@ -86,88 +86,95 @@ CREATE TABLE Categoria (
 );
 
 CREATE TABLE Prato (
-    cod int AUTO_INCREMENT,
+    codPrato int AUTO_INCREMENT,
+    cod int NOT NULL,
     nome varchar(20) NOT NULL,
     preco float NOT NULL,
     ingredientes varchar(100) NOT NULL,
     descricao varchar(100) NOT NULL,
  
-    PRIMARY KEY(cod),
+    PRIMARY KEY(codPrato),
     FOREIGN KEY (cod) REFERENCES Restaurante(id)
 
 );
 
 CREATE TABLE Bebida (
-    cod int AUTO_INCREMENT,
+    codBebida int AUTO_INCREMENT,
+    cod int NOT NULL,
     nome varchar(20) NOT NULL,
     preco float NOT NULL,
 
-    PRIMARY KEY(cod),
+    PRIMARY KEY(codBebida),
     FOREIGN KEY (cod) REFERENCES Restaurante(id)
 
 );
 
 CREATE TABLE Sobremesa (
-    cod int AUTO_INCREMENT,
+    codSobremesa int AUTO_INCREMENT,
+    cod int NOT NULL,
     nome varchar(20) NOT NULL,
     preco float NOT NULL,
 
-    PRIMARY KEY(cod),
+    PRIMARY KEY(codSobremesa),
     FOREIGN KEY (cod) REFERENCES Restaurante(id)
 
 );
 
 CREATE TABLE Pedido (
-    cod int AUTO_INCREMENT,
+    codPedido int AUTO_INCREMENT,
+    cod int NOT NULL,
     statusPedido varchar(20) NOT NULL,
     previsaoEntrega TIME NOT NULL,
     origem varchar(50) NOT NULL,
-    destino varchar(20) NOT NULL, 
+    destino varchar(100) NOT NULL, 
 
-    PRIMARY KEY(cod),
+    PRIMARY KEY(codPedido),
     FOREIGN KEY (cod) REFERENCES Restaurante(id)
-
-    /*ACHO QUE TEREMOS QUE INSERIR MAIS CHAVES ESTRANGEIRAS AQUI. */
 
 );
 
 CREATE TABLE Cupom (
-    cod int AUTO_INCREMENT,
+    codCupom int AUTO_INCREMENT,
+    cod int NOT NULL,
     nome varchar(20) NOT NULL,
     descricao varchar(20) NOT NULL,
     valor float NOT NULL,
     statusCupom Boolean NOT NULL,
 
-    PRIMARY KEY(cod),
+    PRIMARY KEY(codCupom),
     FOREIGN KEY (cod) REFERENCES Restaurante(id)
 
 );
 
 CREATE TABLE RestaurantePedidoAvaliacao (
-    cod int AUTO_INCREMENT,
+    codRPA int AUTO_INCREMENT,
+    codRestaurante int NOT NULL,
+    codPedido int NOT NULL,
+    codAvaliacao int,
 
-    PRIMARY KEY(cod),
-    FOREIGN KEY (cod) REFERENCES Restaurante(id),
-    FOREIGN KEY (cod) REFERENCES Pedido(cod)
-    -- FOREIGN KEY (cod) REFERENCES Avaliacao(cod)
+    PRIMARY KEY(codRPA),
+    FOREIGN KEY (codRestaurante) REFERENCES Restaurante(id),
+    FOREIGN KEY (codPedido) REFERENCES Pedido(cod),
+    FOREIGN KEY (codAvaliacao) REFERENCES Avaliacao(cod)
 );
 
 CREATE TABLE Avaliacao (
-    cod int AUTO_INCREMENT,
+    codAvaliacao int AUTO_INCREMENT,
+    cod int NOT NULL,
     nota int NOT NULL,
     descricao varchar(200) NOT NULL,
 
-    PRIMARY KEY(cod),
-    FOREIGN KEY (cod) REFERENCES Universitario(cod),
-    FOREIGN KEY (cod) REFERENCES RestaurantePedidoAvaliacao(cod)
+    PRIMARY KEY(codAvaliacao),
+    FOREIGN KEY (cod) REFERENCES Universitario(cod)
     
 );
 
 CREATE TABLE CategoriaPrato (
-    id int AUTO_INCREMENT,
+    codCategoria int AUTO_INCREMENT,
+    cod int NOT NULL,
     nome varchar(20) NOT NULL,
 
-    PRIMARY KEY(id),
-    FOREIGN KEY (id) REFERENCES Prato(cod)
+    PRIMARY KEY(codCategoria),
+    FOREIGN KEY (cod) REFERENCES Prato(codPrato)
 
 );

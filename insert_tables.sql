@@ -1,3 +1,6 @@
+-- CREATE DATABASE IfoodRU;
+USE IfoodRU;
+
 INSERT INTO Usuario
 VALUES 
 (
@@ -135,20 +138,8 @@ INSERT INTO Restaurante VALUES (
 ),
 
 (
-  4
+  4,
   "Tudo gostoso"
-);
-
-INSERT INTO Avaliacao VALUES (
-  5,
-  3,
-  "Lanche gostoso mas veio pouca batata"
-),
-
-(
-  6,
-  5,
-  "Lanche impecável"
 );
 
 INSERT INTO Categoria VALUES (
@@ -162,18 +153,19 @@ INSERT INTO Categoria VALUES (
 );
 
 INSERT INTO Prato VALUES (
-
+  1,
   3,
   "Hamburguer de Siri",
-  20,
+  20.00,
   "Pao, Bife, Bacon, Calabresa e Batata",
   "Melhor hamburguer de todos"
 ),
 
 (
+  2,
   3,
-  "Hamburguer Tradicional",
-  10,
+  "Hamburguer Trad",
+  10.00,
   "Pao, Bife e Batata",
   "Bom e barato"
 
@@ -181,29 +173,33 @@ INSERT INTO Prato VALUES (
 
 (
   3,
-  "Hamburguer de Bacon",
-  15,
+  3,
+  "Hamburguer Bacon",
+  15.00,
   "Pao, Bife Bacon Batata",
   "Gostoso e super recheado"
 ),
 
 (
   4,
+  4,
   "Feijoada",
-  25,
+  25.00,
   "Feijão, linguiça e torresmo",
   "Feijoada mais completa da cidade"
 ),
 
 (
+  5,
   4,
   "PF",
-  15,
+  15.00,
   "Arroz, Feijão, Carne e Salada",
   "Melhor PF da cidade"
 );
 
 INSERT INTO Bebida VALUES (
+  1,
   3,
   "COca cola",
   5.00
@@ -211,12 +207,14 @@ INSERT INTO Bebida VALUES (
 ),
 
 (
+  2,
   3,
   "Guaraná",
   4.95
 ),
 
 (
+  3,
   4,
   "Suco de laranja",
   5.00
@@ -225,45 +223,34 @@ INSERT INTO Bebida VALUES (
 
 (
   4,
+  4,
   "Água",
   2.00
 );
 
 INSERT INTO Sobremesa VALUES (
+  1,
   3,
   "Pudim",
   2.55
 ),
 
 (
+  2,
   4,
   "Pavê",
   2.00
 ),
 
 (
+  3,
   4,
   "Pudim",
   3.00
 );
 
-INSERT INTO Pedido VALUES (
-  5,
-  "Preparando",
-  "20:30",  --Nao sei se essa é a entrada do tipo TIME
-  "Siri Cascudo",
-  " " --Acho que tem q ter alguma coisa pra pegar o campo endereco do universitario
-),
-
-(
-  6,
-  "Preparando",
-  "20:30",  --Nao sei se essa é a entrada do tipo TIME
-  "Siri Cascudo",
-  " " --Acho que tem q ter alguma coisa pra pegar o campo endereco do universitario
-);
-
 INSERT INTO Cupom VALUES (
+  1,
   3,
   "Vale 10 reais",
   "Aproveita o desconto",
@@ -272,6 +259,7 @@ INSERT INTO Cupom VALUES (
 ),
 
 ( 
+  2,
   3,
   "Vai um desconto ai",
   "10 Reais OFF",
@@ -280,6 +268,7 @@ INSERT INTO Cupom VALUES (
 ),
 
 ( 
+  3,
   4,
   "Fraga o desconto",
   "5 Reais OFF",
@@ -287,7 +276,8 @@ INSERT INTO Cupom VALUES (
   1
 ),
 
-( 
+(
+  4, 
   4,
   "Aproveita ai fera",
   "7 Reais OFF",
@@ -296,21 +286,74 @@ INSERT INTO Cupom VALUES (
 ),
 
 ( 
+  5,
   4,
-  "Pra voce tomar um café depois",
+  "Vai um cafezin?",
   "5 Reais OFF",
   7.00,
   0
 );
 
-/* INSERT INTO RestaurantePedidoAvaliacao VALUES (
+INSERT INTO Pedido VALUES (
+  1,
+  3,
+  "Preparando",
+  "20:30",  
+  "Siri Cascudo",
+  " Rua das Couves 54" 
+),
 
+(
+  2,
+  4,
+  "Preparando",
+  "20:30",  
+  "Siri Cascudo",
+  " Rua jose 54" 
+);
 
-); */
+INSERT INTO RestaurantePedidoAvaliacao VALUES (
+
+  1,
+  3,
+  3,
+  5
+
+),
+
+(
+  2,
+  3,
+  4,
+  6
+
+);
+
+INSERT INTO Avaliacao VALUES (
+  1,
+  5,
+  3,
+  "Lanche gostoso mas veio pouca batata"
+),
+
+(
+  2,
+  6,
+  5,
+  "Lanche impecável"
+);
 
 INSERT INTO CategoriaPrato VALUES (
-  -- Não preenchi aqui pq talvez vamos precisar colocar mais algumas chaves na tabela Prato
-)
+  1,
+  1,
+  "Brasileira"
 
+),
+
+(
+  2,
+  2,
+  "Lanches"
+);
 
 
