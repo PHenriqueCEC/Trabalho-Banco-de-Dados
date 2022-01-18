@@ -60,48 +60,57 @@ VALUES
 );
 
 INSERT INTO Universitario VALUES (
+    1,
     5
 ),
 
-(
+(   2,
     6
 );
 
 INSERT INTO Funcionario VALUES (
+    1,
     3
 ),
 
 (
+    2,
     4
 );
 
 INSERT INTO Administrador VALUES (
+  1,
   1
 ),
 
 (
+  2,
   7
 );
 
 INSERT INTO Motoboy VALUES (
+  1,
   2,
   "111",
   "CRU-123"
 ),
 
 (
+  2,
   8,
   "666",
   "GST-666"
 );
 
 INSERT INTO Sugestoes VALUES (
+  1,
   5,
   "O aplicativo deveria incluir a foto do Motoboy que vai fazer a entrega"
 
 ),
 
 (
+  2,
   6,
   "Gostaria que o aplicativo funcionasse em terra firme e não 
   somente na Fenda do Biquine"
@@ -109,6 +118,7 @@ INSERT INTO Sugestoes VALUES (
 );
 
 INSERT INTO Endereco VALUES (
+  1,
   5,
   "36540-000",
   "rua das pedras",
@@ -121,6 +131,7 @@ INSERT INTO Endereco VALUES (
 ),
 
 (
+  2,
   6,
   "25489-000",
   "rua da terra",
@@ -133,28 +144,44 @@ INSERT INTO Endereco VALUES (
 );
 
 INSERT INTO Restaurante VALUES (
-  3,
+  1,
+  1,
   "Siri Cascudo"
 ),
 
 (
-  4,
+  2,
+  2,
   "Tudo gostoso"
 );
 
 INSERT INTO Categoria VALUES (
-  3,
+  1,
+  1,
   "Lanches"
 ),
 
 (
-  4,
+  2,
+  2,
   "Comida brasileira"
+);
+
+INSERT INTO CategoriaPrato VALUES (
+  1,
+  "Brasileira"
+
+),
+
+(
+  2,
+  "Lanches"
 );
 
 INSERT INTO Prato VALUES (
   1,
-  3,
+  1,
+  2,
   "Hamburguer de Siri",
   20.00,
   "Pao, Bife, Bacon, Calabresa e Batata",
@@ -163,7 +190,8 @@ INSERT INTO Prato VALUES (
 
 (
   2,
-  3,
+  1,
+  2,
   "Hamburguer Trad",
   10.00,
   "Pao, Bife e Batata",
@@ -173,7 +201,8 @@ INSERT INTO Prato VALUES (
 
 (
   3,
-  3,
+  1,
+  2,
   "Hamburguer Bacon",
   15.00,
   "Pao, Bife Bacon Batata",
@@ -182,7 +211,8 @@ INSERT INTO Prato VALUES (
 
 (
   4,
-  4,
+  2,
+  1,
   "Feijoada",
   25.00,
   "Feijão, linguiça e torresmo",
@@ -191,7 +221,8 @@ INSERT INTO Prato VALUES (
 
 (
   5,
-  4,
+  2,
+  1,
   "PF",
   15.00,
   "Arroz, Feijão, Carne e Salada",
@@ -200,7 +231,7 @@ INSERT INTO Prato VALUES (
 
 INSERT INTO Bebida VALUES (
   1,
-  3,
+  1,
   "COca cola",
   5.00
 
@@ -208,14 +239,14 @@ INSERT INTO Bebida VALUES (
 
 (
   2,
-  3,
+  1,
   "Guaraná",
   4.95
 ),
 
 (
   3,
-  4,
+  2,
   "Suco de laranja",
   5.00
 
@@ -223,35 +254,35 @@ INSERT INTO Bebida VALUES (
 
 (
   4,
-  4,
+  2,
   "Água",
   2.00
 );
 
 INSERT INTO Sobremesa VALUES (
   1,
-  3,
+  1,
   "Pudim",
   2.55
 ),
 
 (
   2,
-  4,
+  2,
   "Pavê",
   2.00
 ),
 
 (
   3,
-  4,
+  2,
   "Pudim",
   3.00
 );
 
 INSERT INTO Cupom VALUES (
   1,
-  3,
+  1,
   "Vale 10 reais",
   "Aproveita o desconto",
   10.00,
@@ -260,7 +291,7 @@ INSERT INTO Cupom VALUES (
 
 ( 
   2,
-  3,
+  1,
   "Vai um desconto ai",
   "10 Reais OFF",
   10.00,
@@ -269,7 +300,7 @@ INSERT INTO Cupom VALUES (
 
 ( 
   3,
-  4,
+  2,
   "Fraga o desconto",
   "5 Reais OFF",
   5.00,
@@ -278,7 +309,7 @@ INSERT INTO Cupom VALUES (
 
 (
   4, 
-  4,
+  2,
   "Aproveita ai fera",
   "7 Reais OFF",
   7.00,
@@ -287,7 +318,7 @@ INSERT INTO Cupom VALUES (
 
 ( 
   5,
-  4,
+  2,
   "Vai um cafezin?",
   "5 Reais OFF",
   7.00,
@@ -296,7 +327,9 @@ INSERT INTO Cupom VALUES (
 
 INSERT INTO Pedido VALUES (
   1,
-  3,
+  1,
+  1,
+  1,
   "Preparando",
   "20:30",  
   "Siri Cascudo",
@@ -305,55 +338,43 @@ INSERT INTO Pedido VALUES (
 
 (
   2,
-  4,
+  2,
+  2,
+  1,
   "Preparando",
   "20:30",  
   "Siri Cascudo",
   " Rua jose 54" 
 );
 
-INSERT INTO RestaurantePedidoAvaliacao VALUES (
-
-  1,
-  3,
-  3,
-  5
-
-),
-
-(
-  2,
-  3,
-  4,
-  6
-
-);
-
 INSERT INTO Avaliacao VALUES (
   1,
-  5,
+  1,
   3,
   "Lanche gostoso mas veio pouca batata"
 ),
 
 (
   2,
-  6,
+  2,
   5,
   "Lanche impecável"
 );
 
-INSERT INTO CategoriaPrato VALUES (
+INSERT INTO RestaurantePedidoAvaliacao VALUES (
+
   1,
   1,
-  "Brasileira"
+  1,
+  1
 
 ),
 
 (
   2,
   2,
-  "Lanches"
-);
+  2,
+  2
 
+);
 

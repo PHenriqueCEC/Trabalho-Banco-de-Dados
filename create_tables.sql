@@ -50,17 +50,17 @@ CREATE TABLE Administrador (
 
 CREATE TABLE Sugestoes (
     id int AUTO_INCREMENT,
-    codUniversitario int NOT NULL,
+    codUsuario int NOT NULL,
     descricao varchar(256) NOT NULL,
 
      PRIMARY KEY(id),
-     FOREIGN KEY (codUniversitario) REFERENCES Universitario(cod)
+     FOREIGN KEY (codUsuario) REFERENCES Usuario(cod)
 
 );
 
 CREATE TABLE Endereco (
     cod int AUTO_INCREMENT,
-    codUniversitario int NOT NULL,
+    codUsuario int NOT NULL,
     cep varchar(10) NOT NULL,
     logradouro varchar(100) NOT NULL, 
     bairro varchar(30) NOT NULL,
@@ -70,16 +70,16 @@ CREATE TABLE Endereco (
     estado varchar(20) NOT NULL,
 
     PRIMARY KEY(cod),
-    FOREIGN KEY (codUniversitario) REFERENCES Universitario(cod)
+    FOREIGN KEY (codUsuario) REFERENCES Usuario(cod)
 );
 
 CREATE TABLE Restaurante (
     id int AUTO_INCREMENT,
-    codFuncionario int NOT NULL,
+    codUsuario int NOT NULL,
     nome varchar(30) NOT NULL,
 
     PRIMARY KEY(id),
-    FOREIGN KEY (codFuncionario) REFERENCES Funcionario(cod) 
+    FOREIGN KEY (codUsuario) REFERENCES Usuario(cod) 
 
 );
 
@@ -141,13 +141,17 @@ CREATE TABLE Sobremesa (
 CREATE TABLE Pedido (
     cod int AUTO_INCREMENT,
     codRestaurante int NOT NULL,
+    codUniversitario int NOT NULL,
+    codMotoboy int NOT NULL,
     statusPedido varchar(20) NOT NULL,
     previsaoEntrega TIME NOT NULL,
     origem varchar(50) NOT NULL,
     destino varchar(100) NOT NULL, 
 
     PRIMARY KEY(cod),
-    FOREIGN KEY (codRestaurante) REFERENCES Restaurante(id)
+    FOREIGN KEY (codRestaurante) REFERENCES Restaurante(id),
+    FOREIGN KEY (codUniversitario) REFERENCES Universitario(cod),
+    FOREIGN KEY (codMotoboy) REFERENCES Motoboy(cod)
 
 );
 
