@@ -83,12 +83,10 @@ INSERT INTO Restaurante VALUES (
 INSERT INTO Categoria VALUES (
   1,
   1,
-  1,
   "Lanches"
 ),
 
 (
-  2,
   2,
   2,
   "Comida brasileira"
