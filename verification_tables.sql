@@ -6,7 +6,7 @@ DELETE FROM Usuario WHERE cod = "35";
 
 INSERT INTO Prato (cod,nome,preco,ingredientes,descricao) VALUES (1,"Macarrão à Bolonhesa",23.8,"macarrao espaguete, molho de tomate, carne moída, manjericão","Um prato típico da cultura italiano");
 
-INSERT INTO Categoria (cod,nome) VALUES (2,"Japonês");
+INSERT INTO Sobremesa (cod,nome,preco) VALUES (2,"Paçoca",1.5);
 
 UPDATE Usuario SET email = "marcos@nasa.org" WHERE cod = "87";
 
@@ -14,6 +14,6 @@ DELETE FROM Categoria WHERE cod = "2";
 
 INSERT INTO Bebida (cod,nome,preco) VALUES (1,"Suco Tropical",1.5);
 
-INSERT INTO Usuário (cod,nome,email,senha) VALUES (1,"Jorge Jesus","jorge.jesus@bragantino.org","654af44c5e454949fe984ca464de8464");
+INSERT INTO Usuario (cod,nome,email,senha) VALUES (1,"Jorge Jesus","jorge.jesus@bragantino.org","654af44c5e454949fe984ca464de8464");
 
 INSERT INTO Motoboy (cod,cnh,placa,codUsuario) VALUES (1,"2646163419846",256461,1);
