@@ -1,16 +1,42 @@
 CREATE DATABASE ifoodru;
 USE ifoodru;
+
+CREATE TABLE categories_restaurants (
+  id int AUTO_INCREMENT,
+  name varchar(20) NOT NULL,
+  PRIMARY KEY(id)
+);
+
+CREATE TABLE restaurants (
+  id int AUTO_INCREMENT,
+  name varchar(30) NOT NULL,
+  category_restaurant_id int NOT NULL,
+  PRIMARY KEY(id),
+  FOREIGN KEY (category_restaurant_id) REFERENCES categories_restaurants(id)
+);
+
 CREATE TABLE users (
   id int AUTO_INCREMENT,
   name varchar(100) NOT NULL,
-  type number NOT NULL,
+  type int NOT NULL,
   email varchar(200) UNIQUE NOT NULL,
   license_plate varchar(10),
   driver_license varchar(10),
-  password varchar(256),
-  restaurant_id int,
-  PRIMARY KEY (id) FOREIGN KEY (restaurant_id) REFERENCES restaurants(id)
+  password varchar(256) NOT NULL,
+  PRIMARY KEY (id)
 );
+
+
+CREATE TABLE users_resturant(
+  id int AUTO_INCREMENT,
+  user_id int NOT NULL,
+  restaurant_id int NOT NULL,
+
+  PRIMARY KEY (id),
+  FOREIGN KEY (user_id) REFERENCES users(id),
+  FOREIGN KEY (restaurant_id) REFERENCES restaurants(id)
+);
+
 CREATE TABLE suggestions (
   id int AUTO_INCREMENT,
   user_id int NOT NULL,
@@ -31,19 +57,9 @@ CREATE TABLE addresses (
   PRIMARY KEY(id),
   FOREIGN KEY (user_id) REFERENCES users(id)
 );
-CREATE TABLE restaurants (
-  id int AUTO_INCREMENT,
-  name varchar(30) NOT NULL,
-  category_restaurant_id int NOT NULL,
-  PRIMARY KEY(id),
-  FOREIGN KEY (category_restaurant_id) REFERENCES category_restaurants(id)
-);
-CREATE TABLE category_restaurants (
-  id int AUTO_INCREMENT,
-  name varchar(20) NOT NULL,
-  PRIMARY KEY(id),
-);
-CREATE TABLE category_dishes (
+
+
+CREATE TABLE categories_dishes (
   id int AUTO_INCREMENT,
   name varchar(20) NOT NULL,
   PRIMARY KEY(id)
@@ -58,7 +74,7 @@ CREATE TABLE dishes (
   description varchar(100) NOT NULL,
   PRIMARY KEY(id),
   FOREIGN KEY (restaurant_id) REFERENCES restaurants(id),
-  FOREIGN KEY (category_dishes_id) REFERENCES category_dishes(id)
+  FOREIGN KEY (category_dishes_id) REFERENCES categories_dishes(id)
 );
 CREATE TABLE drinks (
   id int AUTO_INCREMENT,
@@ -95,29 +111,29 @@ CREATE TABLE orders (
 CREATE TABLE orders_dishes(
     id int AUTO_INCREMENT,
     order_id int NOT NULL,
-    dish_id in NOT NULL,
-
+    dish_id int NOT NULL,
+    PRIMARY KEY(id),
     FOREIGN KEY (order_id) REFERENCES orders(id),
     FOREIGN KEY (dish_id) REFERENCES dishes(id)
-)
+);
 
 CREATE TABLE orders_drinks(
     id int AUTO_INCREMENT,
     order_id int NOT NULL,
-    drink_id in NOT NULL,
-
+    drink_id int NOT NULL,
+    PRIMARY KEY(id),
     FOREIGN KEY (order_id) REFERENCES orders(id),
     FOREIGN KEY (drink_id) REFERENCES drinks(id)
-)
+);
 
 CREATE TABLE orders_desserts(
     id int AUTO_INCREMENT,
     order_id int NOT NULL,
-    dessert_id in NOT NULL,
-
+    dessert_id int NOT NULL,
+    PRIMARY KEY(id),
     FOREIGN KEY (order_id) REFERENCES orders(id),
     FOREIGN KEY (dessert_id) REFERENCES desserts(id)
-)
+);
 
 CREATE TABLE coupons (
   id int AUTO_INCREMENT,
@@ -126,7 +142,7 @@ CREATE TABLE coupons (
   description varchar(20) NOT NULL,
   value float NOT NULL,
   status Boolean NOT NULL,
-  PRIMARY KEY(cod),
+  PRIMARY KEY(id),
   FOREIGN KEY (restaurant_id) REFERENCES restaurants(id)
 );
 CREATE TABLE rating (
@@ -142,7 +158,7 @@ CREATE TABLE restaurants_rating_orders (
   restaurant_id int NOT NULL,
   order_id int NOT NULL,
   rating_id int NOT NULL,
-  PRIMARY KEY(codRPA),
+  PRIMARY KEY(id),
   FOREIGN KEY (restaurant_id) REFERENCES restaurants(id),
   FOREIGN KEY (order_id) REFERENCES orders(id),
   FOREIGN KEY (rating_id) REFERENCES rating(id)
