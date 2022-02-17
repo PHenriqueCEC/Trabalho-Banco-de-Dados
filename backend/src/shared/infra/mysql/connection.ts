@@ -1,16 +1,19 @@
-import knex from "knex"
+import mysql from 'mysql';
+
+const connection = mysql.createConnection({
+    host: 'database',
+    port: 3306,
+    user: 'root',
+    password: 'docker',
+    database: 'ifoodru',
+});
 
 
-const connection = knex({
-    client: "mysql",
-    connection: {
-        host: "localhost",
-        port: 3306,
-        user: "",
-        password: "",
-        database: "ifoodru"
-    }
-})
+connection.connect((err) => {
+    if (err) throw err;
 
+    console.log("Connected!");
 
-export { connection }
+});
+
+export { connection };

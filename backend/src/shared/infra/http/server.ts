@@ -1,7 +1,9 @@
 import express from "express";
 import { routes } from "../routes";
 
-import "@shared/infra/mysql/connection"
+import "@shared/infra/mysql/connection";
+
+import "@shared/container";
 
 const app = express();
 
