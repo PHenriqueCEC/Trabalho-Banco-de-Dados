@@ -1,6 +1,6 @@
-import { Router } from "express"
+import { Router } from "express";
 
-const routes = Router()
+const routes = Router();
 
 
-export { routes }
+export { routes };
