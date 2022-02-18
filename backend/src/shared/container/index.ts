@@ -15,3 +15,15 @@ import "@modules/orders_drinks/entities/OrderDrink";
 import "@modules/coupons/entities/Coupon";
 import "@modules/rating/entities/Rating";
 import "@modules/restaurants_rating_orders/entities/RestaurantRatingOrder";
+
+import { CategoriesRestaurantsRepository } from "@modules/categories_restaurants/repositories/CategoriesRestaurantsRepository";
+
+
+
+
+const categoriesRestaurantsRepository = new CategoriesRestaurantsRepository();
+
+
+export {
+    categoriesRestaurantsRepository,
+};
