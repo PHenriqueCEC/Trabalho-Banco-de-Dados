@@ -20,6 +20,7 @@ import { CategoriesRestaurantsRepository } from "@modules/categories_restaurants
 import { UserRepository } from "@modules/users/repositories/UserRepository";
 import { AdressRepository } from "@modules/addresses/repositories/AdressRepository";
 import { SuggestionRepository } from "@modules/suggestions/repositories/SuggestionRepository";
+import { RatingRepository } from "@modules/rating/repositories/RatingRepository";
 
 
 
@@ -27,6 +28,7 @@ const categoriesRestaurantsRepository = new CategoriesRestaurantsRepository();
 const userRepository = new UserRepository();
 const adressRepository = new AdressRepository();
 const suggestionRepository = new SuggestionRepository();
+const ratingRepository = new RatingRepository();
 
 
 export {
@@ -34,5 +36,6 @@ export {
     userRepository,
     adressRepository,
     suggestionRepository,
+    ratingRepository,
 
 };
