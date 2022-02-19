@@ -21,6 +21,7 @@ import { UserRepository } from "@modules/users/repositories/UserRepository";
 import { AdressRepository } from "@modules/addresses/repositories/AdressRepository";
 import { SuggestionRepository } from "@modules/suggestions/repositories/SuggestionRepository";
 import { RatingRepository } from "@modules/rating/repositories/RatingRepository";
+import { CoupomRepository } from "@modules/coupons/repositories/CoupomRepository";
 
 
 
@@ -29,6 +30,7 @@ const userRepository = new UserRepository();
 const adressRepository = new AdressRepository();
 const suggestionRepository = new SuggestionRepository();
 const ratingRepository = new RatingRepository();
+const coupomRepository = new CoupomRepository();
 
 
 export {
@@ -37,5 +39,6 @@ export {
     adressRepository,
     suggestionRepository,
     ratingRepository,
+    coupomRepository,
 
 };
