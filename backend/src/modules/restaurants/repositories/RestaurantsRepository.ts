@@ -1,23 +1,26 @@
 import { connection } from "@shared/infra/mysql/connection";
+import { Restaurant } from "../entities/Restaurant";
 
 
-interface CreateCategoryRestaurantDTO {
+interface CreateRestaurantDTO {
     name: string;
+    category_restaurant_id: number;
 }
 
 
-interface UpdateCategoryRestaurantDTO {
+interface UpdateRestaurantDTO {
     id: number;
     name: string;
+    category_restaurant_id: number;
 }
 
-class CategoriesRestaurantsRepository {
+class RestaurantsRepository {
 
-    public async create({ name }: CreateCategoryRestaurantDTO): Promise<any> {
+    public async create({ name, category_restaurant_id }: CreateRestaurantDTO): Promise<any> {
 
         return new Promise((resolve, reject) => {
 
-            connection.query(`INSERT INTO categories_restaurants (name) VALUES ('${name}');`, (err, result, field) => {
+            connection.query(`INSERT INTO restaurants (name, category_restaurant_id) VALUES ('${name}','${category_restaurant_id}');`, (err, result, field) => {
 
                 if (err) {
                     reject(err);
@@ -28,11 +31,11 @@ class CategoriesRestaurantsRepository {
 
     };
 
-    public async update({ id, name }: UpdateCategoryRestaurantDTO): Promise<any> {
+    public async update({ id, name, category_restaurant_id }: UpdateRestaurantDTO): Promise<any> {
 
         return new Promise((resolve, reject) => {
 
-            connection.query(`UPDATE categories_restaurants SET name = '${name}' WHERE id = ${id};`, (err, result, field) => {
+            connection.query(`UPDATE restaurants SET name = '${name}', category_restaurant_id = '${category_restaurant_id}' WHERE id = ${id};`, (err, result, field) => {
 
 
                 if (err) {
@@ -51,7 +54,7 @@ class CategoriesRestaurantsRepository {
 
         return new Promise((resolve, reject) => {
 
-            connection.query(`DELETE FROM categories_restaurants WHERE categories_restaurants.id = ${id}`, (err, result, field) => {
+            connection.query(`DELETE FROM restaurants WHERE restaurants.id = ${id}`, (err, result, field) => {
 
                 if (err) {
                     reject(err);
@@ -64,11 +67,11 @@ class CategoriesRestaurantsRepository {
 
     };
 
-    public async show(id: number): Promise<any> {
+    public async show(id: number): Promise<Restaurant> {
 
         return new Promise((resolve, reject) => {
 
-            connection.query(`SELECT * FROM categories_restaurants WHERE categories_restaurants.id = ${id} LIMIT 1;`, (err, result, field) => {
+            connection.query(`SELECT * FROM restaurants WHERE restaurants.id = ${id} LIMIT 1;`, (err, result, field) => {
 
 
                 if (err) {
@@ -80,11 +83,11 @@ class CategoriesRestaurantsRepository {
 
     };
 
-    public async findAll(): Promise<any> {
+    public async findAll(): Promise<Restaurant[]> {
 
         return new Promise((resolve, reject) => {
 
-            connection.query(`SELECT * FROM categories_restaurants`, (err, result) => {
+            connection.query(`SELECT * FROM restaurants`, (err, result) => {
 
                 if (err) {
                     reject(err);
@@ -98,4 +101,4 @@ class CategoriesRestaurantsRepository {
     }
 }
 
-export { CategoriesRestaurantsRepository };
+export { RestaurantsRepository };
