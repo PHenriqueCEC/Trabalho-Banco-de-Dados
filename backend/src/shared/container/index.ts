@@ -17,13 +17,16 @@ import "@modules/rating/entities/Rating";
 import "@modules/restaurants_rating_orders/entities/RestaurantRatingOrder";
 
 import { CategoriesRestaurantsRepository } from "@modules/categories_restaurants/repositories/CategoriesRestaurantsRepository";
-
+import { UserRepository } from "@modules/users/repositories/UserRepository";
 
 
 
 const categoriesRestaurantsRepository = new CategoriesRestaurantsRepository();
+const userRepository = new UserRepository();
 
 
 export {
     categoriesRestaurantsRepository,
+    userRepository,
+
 };
