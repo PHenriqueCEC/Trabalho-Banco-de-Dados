@@ -20,6 +20,7 @@ import { CategoriesRestaurantsRepository } from "@modules/categories_restaurants
 import { RestaurantsRepository } from "@modules/restaurants/repositories/RestaurantsRepository";
 import { DrinksRepository } from "@modules/drinks/repositories/DrinksRepository";
 import { CategoriesDishesRepository } from "@modules/categories_dishes/repositories/CategoriesDishesRepository";
+import { DishesRepository } from "@modules/dishes/repositories/DishesRepository";
 
 
 
@@ -28,6 +29,7 @@ const categoriesRestaurantsRepository = new CategoriesRestaurantsRepository();
 const restaurantsRepository = new RestaurantsRepository();
 const drinksRespository = new DrinksRepository();
 const categoriesDishesRepository = new CategoriesDishesRepository();
+const dishesRepository = new DishesRepository();
 
 
 export {
@@ -35,4 +37,5 @@ export {
     restaurantsRepository,
     drinksRespository,
     categoriesDishesRepository,
+    dishesRepository,
 };
