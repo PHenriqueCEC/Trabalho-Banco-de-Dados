@@ -18,15 +18,18 @@ import "@modules/restaurants_rating_orders/entities/RestaurantRatingOrder";
 
 import { CategoriesRestaurantsRepository } from "@modules/categories_restaurants/repositories/CategoriesRestaurantsRepository";
 import { RestaurantsRepository } from "@modules/restaurants/repositories/RestaurantsRepository";
+import { DrinksRepository } from "@modules/drinks/repositories/DrinksRepository";
 
 
 
 
 const categoriesRestaurantsRepository = new CategoriesRestaurantsRepository();
 const restaurantsRepository = new RestaurantsRepository();
+const drinksRespository = new DrinksRepository();
 
 
 export {
     categoriesRestaurantsRepository,
     restaurantsRepository,
+    drinksRespository,
 };
