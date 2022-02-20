@@ -38,11 +38,12 @@ class CoupomController {
 
     public update = async (request: Request, response: Response): Promise<Response> => {
 
-        const { name } = request.body;
+        const { restaurant_id, name } = request.body;
         const { id } = request.params;
 
         await this.coupomRepository.update({
             id: Number(id),
+            restaurant_id,
             name,
         });
 

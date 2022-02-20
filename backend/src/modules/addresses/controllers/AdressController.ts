@@ -14,10 +14,10 @@ class AdressController {
 
     public create = async (request: Request, response: Response): Promise<Response> => {
 
-        const { userId, zip_code, public_place, district, number, complement, city, state } = request.body;
+        const { user_id, zip_code, public_place, district, number, complement, city, state } = request.body;
         
         const adress = await this.AdressRepository.create({
-            userId,
+            user_id,
             zip_code,
             public_place, 
             district, 
@@ -42,12 +42,20 @@ class AdressController {
 
     public update = async (request: Request, response: Response): Promise<Response> => {
 
-        const { complement } = request.body;
+        const { user_id, zip_code, public_place, district, number,
+            complement, city, state  } = request.body;
         const { id } = request.params;
 
         await this.AdressRepository.update({
             id: Number(id),
-            complement,
+            user_id, 
+            zip_code, 
+            public_place, 
+            district, 
+            number,
+            complement, 
+            city, 
+            state ,
         });
 
         return response.status(200).json();

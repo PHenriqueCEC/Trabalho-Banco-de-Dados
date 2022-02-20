@@ -1,5 +1,5 @@
 import { connection } from "@shared/infra/mysql/connection";
-import { Coupom } from "../entities/Coupom";
+import { Coupon } from "../entities/Coupon";
 
 
 interface CreateCoupomDTO {
@@ -12,6 +12,7 @@ interface CreateCoupomDTO {
 
 interface UpdateCoupomDTO {
     id: number;
+    restaurant_id: number;
     name: string;
 }
 
@@ -21,8 +22,8 @@ class CoupomRepository {
 
         return new Promise((resolve, reject) => {
 
-            connection.query(`INSERT INTO coupons (name) (description) (values) (status) VALUES 
-            ('${name}') ('${description}') ('${value}') ('${status}');`, (err, result, field) => {
+            connection.query(`INSERT INTO coupons (name, description, values, status) VALUES 
+            ('${name}', '${description}', '${value}', '${status}');`, (err, result, field) => {
 
                 if (err) {
                     reject(err);
@@ -33,11 +34,12 @@ class CoupomRepository {
 
     };
 
-    public async update({ id, name }: UpdateCoupomDTO): Promise<any> {
+    public async update({ id, restaurant_id, name }: UpdateCoupomDTO): Promise<any> {
 
         return new Promise((resolve, reject) => {
 
-            connection.query(`UPDATE coupons SET name = '${name}' WHERE id = ${id};`, (err, result, field) => {
+            connection.query(`UPDATE coupons SET restaurante_id = '${restaurant_id}', 
+            name = '${name}' WHERE id = ${id};`, (err, result, field) => {
 
 
                 if (err) {

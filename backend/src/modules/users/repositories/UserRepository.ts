@@ -15,7 +15,7 @@ interface CreateUserDTO {
 interface UpdateUserDTO {
     id: number;
     password: string;
-    
+
 }
 
 class UserRepository {
@@ -24,7 +24,9 @@ class UserRepository {
 
         return new Promise((resolve, reject) => {
 
-            connection.query(`INSERT INTO users (name) (type) (email) (license_plate) (driver_license) (password)  VALUES ('${name}'), ('${type}') ('${email}') ('${license_plate}') ('${driver_license}') ('${password}') ;`, (err, result, field) => {
+            connection.query(`INSERT INTO users (name, type, email, license_plate, driver_license, 
+                password)  VALUES ('${name}', '${type}', '${email}', 
+            '${license_plate}', '${driver_license}', '${password}');`, (err, result, field) => {
 
                 if (err) {
                     reject(err);
@@ -105,4 +107,4 @@ class UserRepository {
     }
 }
 
-export { UserRepository};
+export { UserRepository };

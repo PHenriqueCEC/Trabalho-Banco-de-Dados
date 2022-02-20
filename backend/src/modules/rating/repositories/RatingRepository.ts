@@ -10,6 +10,7 @@ interface CreateRatingDTO {
 
 interface UpdateRatingDTO {
     id: number;
+    grade: number;
     description: string;
 }
 
@@ -19,7 +20,7 @@ class RatingRepository {
 
         return new Promise((resolve, reject) => {
 
-            connection.query(`INSERT INTO rating(grade) (description) VALUES ('${grade}')('${description}');`, (err, result, field) => {
+            connection.query(`INSERT INTO rating(grade, description) VALUES ('${grade}', '${description}');`, (err, result, field) => {
 
                 if (err) {
                     reject(err);
@@ -30,11 +31,12 @@ class RatingRepository {
 
     };
 
-    public async update({ id, description }: UpdateRatingDTO): Promise<any> {
+    public async update({ id, grade, description }: UpdateRatingDTO): Promise<any> {
 
         return new Promise((resolve, reject) => {
 
-            connection.query(`UPDATE rating SET description = '${description}' WHERE id = ${id};`, (err, result, field) => {
+            connection.query(`UPDATE rating SET grade = '${grade}', 
+            description = '${description} WHERE id = ${id};`, (err, result, field) => {
 
 
                 if (err) {

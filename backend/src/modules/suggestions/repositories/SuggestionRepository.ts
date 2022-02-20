@@ -9,7 +9,8 @@ interface CreateSuggestionDTO {
 
 interface UpdateSuggestionDTO {
     id: number;
-    description: string
+    user_id: number;
+    description: string;
 }
 
 class SuggestionRepository {
@@ -29,11 +30,12 @@ class SuggestionRepository {
 
     };
 
-    public async update({ id, description }: UpdateSuggestionDTO): Promise<any> {
+    public async update({ id, user_id, description }: UpdateSuggestionDTO): Promise<any> {
 
         return new Promise((resolve, reject) => {
 
-            connection.query(`UPDATE suggestions SET description = '${description}' WHERE id = ${id};`, (err, result, field) => {
+            connection.query(`UPDATE suggestions SET user_id = '${user_id}', 
+            description = '${description}' WHERE id = ${id};`, (err, result, field) => {
 
 
                 if (err) {

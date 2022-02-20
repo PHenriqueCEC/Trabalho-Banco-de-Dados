@@ -35,11 +35,12 @@ class SuggestionController {
 
     public update = async (request: Request, response: Response): Promise<Response> => {
 
-        const { description } = request.body;
+        const { user_id, description } = request.body;
         const { id } = request.params;
 
         await this.suggestionRepository.update({
             id: Number(id),
+            user_id,
             description,
         });
 

@@ -2,17 +2,17 @@ import { userRepository } from "@shared/container";
 import { Router } from "express";
 import { UserController } from "../controllers/UserController";
 
-const UserRoutes = Router();
+const userRoutes = Router();
 
 
 const userController = new UserController(userRepository);
 
 
-UserRoutes.post("/", userController.create);
-UserRoutes.get("/", userController.index);
-UserRoutes.put("/:id", userController.update);
-UserRoutes.get("/:id", userController.show);
-UserRoutes.delete("/:id", userController.delete);
+userRoutes.post("/", userController.create);
+userRoutes.get("/", userController.index);
+userRoutes.put("/:id", userController.update);
+userRoutes.get("/:id", userController.show);
+userRoutes.delete("/:id", userController.delete);
 
 
-export { UserRoutes };
+export { userRoutes };

@@ -3,7 +3,7 @@ import { Address } from "../entities/Address";
 
 
 interface CreateAdressDTO {
-    userId: number;
+    user_id: number;
     zip_code: string;
     public_place: string;
     district: string;
@@ -16,18 +16,25 @@ interface CreateAdressDTO {
 
 interface UpdateAdressDTO {
     id: number;
+    user_id: number
+    zip_code: string;
+    public_place: string;
+    district: string;
+    number: number;
     complement: string;
+    city: string;
+    state: string;
 }
 
 class AdressRepository {
 
-    public async create({ userId, zip_code, public_place, district, number, complement, city, state }: CreateAdressDTO): Promise<any> {
+    public async create({ user_id, zip_code, public_place, district, number, complement, city, state }: CreateAdressDTO): Promise<any> {
 
         return new Promise((resolve, reject) => {
 
-            connection.query(`INSERT INTO adresses (userId) (zip_code) (public_place) (district)
-            (number) (complement) (city) (state) VALUES ('${userId}')('${zip_code}')('${public_place}')
-            ('${district}')('${number}')('${complement}')('${city}')('${state}');`, (err, result, field) => {
+            connection.query(`INSERT INTO adresses (user_id, zip_code, public_place, district,
+            number, complement, city, state) VALUES ('${user_id}', '${zip_code}', '${public_place}'
+            '${district}','${number}', '${complement}', '${city}', '${state}');`, (err, result, field) => {
 
                 if (err) {
                     reject(err);
@@ -38,11 +45,14 @@ class AdressRepository {
 
     };
 
-    public async update({ id, complement }: UpdateAdressDTO): Promise<any> {
+    public async update({ id, user_id, zip_code, public_place, district, number,
+        complement, city, state }: UpdateAdressDTO): Promise<any> {
 
         return new Promise((resolve, reject) => {
 
-            connection.query(`UPDATE adresses SET complement = '${complement}' WHERE id = ${id};`, (err, result, field) => {
+            connection.query(`UPDATE adresses SET user_id = '${user_id}', zip_code = '${zip_code}'
+            public_place = '${public_place}, district = '${district}', number = '${number}'
+            complement = '${complement}', city = '${city}', state = '${state}' WHERE id = ${id};`, (err, result, field) => {
 
 
                 if (err) {

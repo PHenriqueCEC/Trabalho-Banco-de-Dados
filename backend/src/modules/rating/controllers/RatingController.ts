@@ -36,11 +36,12 @@ class RatingController {
 
     public update = async (request: Request, response: Response): Promise<Response> => {
 
-        const { description } = request.body;
+        const { grade, description } = request.body;
         const { id } = request.params;
 
         await this.ratingRepository.update({
             id: Number(id),
+            grade,
             description,
         });
 
