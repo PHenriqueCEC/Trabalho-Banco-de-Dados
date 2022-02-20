@@ -14,9 +14,11 @@ class UserController {
 
     public create = async (request: Request, response: Response): Promise<Response> => {
 
-        const { name, type, email, license_plate, driver_license, password } = request.body;
+        const {
+            name, type, email, license_plate, driver_license, password,
+        } = request.body;
 
-        
+
         const User = await this.UserRepository.create({
             name,
             type,
@@ -41,12 +43,19 @@ class UserController {
 
     public update = async (request: Request, response: Response): Promise<Response> => {
 
-        const { password } = request.body;
+        const {
+            password, name, type, email, license_plate, driver_license,
+        } = request.body;
         const { id } = request.params;
 
         await this.UserRepository.update({
             id: Number(id),
             password,
+            name,
+            type,
+            email,
+            license_plate,
+            driver_license,
         });
 
         return response.status(200).json();

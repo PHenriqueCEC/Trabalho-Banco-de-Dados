@@ -12,7 +12,7 @@ interface UpdateOrderDessertDTO {
     dessert_id: number;
 }
 
-class OrderDessertsRepository {
+class OrdersDessertsRepository {
 
     public create({ order_id, dessert_id }: CreateOrderDessertDTO): Promise<void> {
 
@@ -90,4 +90,4 @@ class OrderDessertsRepository {
     }
 }
 
-export { OrderDessertsRepository };
+export { OrdersDessertsRepository };

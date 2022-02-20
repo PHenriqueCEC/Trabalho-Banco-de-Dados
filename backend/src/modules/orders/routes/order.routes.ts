@@ -1,10 +1,12 @@
-import { orderRepository } from "@shared/container";
+import {
+ orderRepository, ordersDessertsRepository, ordersDishesRepository, ordersDrinksRepository, 
+} from "@shared/container";
 import { Router } from "express";
 import { OrderController } from "../controllers/OrderController";
 
 const orderRoutes = Router();
 
-const orderController = new OrderController(orderRepository);
+const orderController = new OrderController(orderRepository, ordersDishesRepository, ordersDrinksRepository, ordersDessertsRepository);
 
 orderRoutes.get("/", orderController.index);
 orderRoutes.get("/:id", orderController.show);

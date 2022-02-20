@@ -14,13 +14,20 @@ interface CreateUserDTO {
 
 interface UpdateUserDTO {
     id: number;
+    name: string;
+    type: number;
+    email: string,
+    license_plate: string;
+    driver_license: string;
     password: string;
 
 }
 
 class UserRepository {
 
-    public async create({ name, type, email, license_plate, driver_license, password }: CreateUserDTO): Promise<any> {
+    public async create({
+        name, type, email, license_plate, driver_license, password,
+    }: CreateUserDTO): Promise<any> {
 
         return new Promise((resolve, reject) => {
 
@@ -37,11 +44,13 @@ class UserRepository {
 
     };
 
-    public async update({ id, password }: UpdateUserDTO): Promise<any> {
+    public async update({
+        id, password, driver_license, email, license_plate, name, type,
+    }: UpdateUserDTO): Promise<any> {
 
         return new Promise((resolve, reject) => {
 
-            connection.query(`UPDATE users SET password = '${password}' WHERE id = ${id};`, (err, result, field) => {
+            connection.query(`UPDATE users SET password = '${password}', name = '${name}', driver_license = '${driver_license}', email = '${email}', license_plate = '${license_plate}', type = ${type} WHERE id = ${id};`, (err, result, field) => {
 
 
                 if (err) {

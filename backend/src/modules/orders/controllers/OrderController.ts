@@ -1,3 +1,9 @@
+import { Dessert } from "@modules/desserts/entities/Dessert";
+import { Dish } from "@modules/dishes/entities/Dish";
+import { Drink } from "@modules/drinks/entities/Drink";
+import { OrdersDessertsRepository } from "@modules/orders_desserts/repositories/OrdersDessertsRepository";
+import { OrdersDishesRepository } from "@modules/orders_dishes/repositories/OrderDishesRepository";
+import { OrdersDrinksRepository } from "@modules/orders_drinks/repositories/OrdersDrinksRepository";
 import { Request, Response } from "express";
 import { OrderRepository } from "../repositories/OrderRepository";
 
@@ -7,28 +13,75 @@ class OrderController {
 
     private orderRepository: OrderRepository;
 
-    constructor(repository: OrderRepository) {
-        this.orderRepository = repository;
+    private ordersDessertsRepository: OrdersDessertsRepository;
+
+    private ordersDishesRepository: OrdersDishesRepository;
+
+    private ordersDrinksRepository: OrdersDrinksRepository;
+
+    constructor(ordersRepository: OrderRepository, ordersDishesRepository: OrdersDishesRepository, ordersDrinksRepository: OrdersDrinksRepository, ordersDessertsRepository: OrdersDessertsRepository) {
+        this.orderRepository = ordersRepository;
+        this.ordersDishesRepository = ordersDishesRepository;
+        this.ordersDessertsRepository = ordersDessertsRepository;
+        this.ordersDrinksRepository = ordersDrinksRepository;
     }
 
     public create = async (request: Request, response: Response): Promise<Response> => {
 
-        const {
-            restaurant_id, academic_id, motoboy_id, status,
-            delivery_forecast, origin, destiny,
-        } = request.body;
+        try {
 
-        await this.orderRepository.create({
-            restaurant_id: Number(restaurant_id),
-            academic_id: Number(academic_id),
-            motoboy_id: Number(motoboy_id),
-            status,
-            delivery_forecast: Number(delivery_forecast),
-            origin,
-            destiny,
-        });
+            const {
+                restaurant_id, academic_id, motoboy_id, status,
+                delivery_forecast, origin, destiny, dishes, drinks, desserts,
+            } = request.body;
 
-        return response.status(200).json({});
+            const order_id = await this.orderRepository.create({
+                restaurant_id: Number(restaurant_id),
+                academic_id: Number(academic_id),
+                motoboy_id: Number(motoboy_id),
+                status,
+                delivery_forecast: Number(delivery_forecast),
+                origin,
+                destiny,
+            });
+
+
+            Promise.resolve(
+                dishes.forEach(async (dish: Dish) => {
+
+                    await this.ordersDishesRepository.create({
+                        order_id,
+                        dish_id: dish.id,
+                    });
+                }),
+            );
+
+            Promise.resolve(
+                drinks.forEach(async (drink: Drink) => {
+
+                    await this.ordersDrinksRepository.create({
+                        order_id,
+                        drink_id: drink.id,
+                    });
+                }),
+            );
+
+            Promise.resolve(
+                desserts.forEach(async (dessert: Dessert) => {
+
+                    await this.ordersDessertsRepository.create({
+                        order_id,
+                        dessert_id: dessert.id,
+                    });
+                }),
+            );
+
+
+            return response.status(200).json({});
+
+        } catch (err) {
+            return response.status(400).json(err);
+        }
 
     }
 

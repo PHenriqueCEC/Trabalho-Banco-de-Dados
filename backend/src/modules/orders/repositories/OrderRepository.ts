@@ -28,18 +28,16 @@ class OrderRepository {
     public async create({
         restaurant_id, academic_id, motoboy_id, status,
         delivery_forecast, origin, destiny,
-    }: CreateOrderDTO): Promise<void> {
+    }: CreateOrderDTO): Promise<any> {
 
         return new Promise((resolve, reject) => {
 
-            connection.query(`INSERT INTO orders (restaurant_id, academic_id, motoboy_id, status,
-                delivery_forecast, origin, destiny ) VALUES ('${restaurant_id}',${academic_id},${motoboy_id},
-                ${status}, ${delivery_forecast}, ${origin}, ${destiny} );`, (err, result, fields) => {
+            connection.query(`INSERT INTO orders (restaurant_id, academic_id, motoboy_id, status, delivery_forecast, origin, destiny ) VALUES ('${restaurant_id}',${academic_id},${motoboy_id}, 'AGUARDANDO APROVAÇÃO', ${delivery_forecast}, '${origin}', '${destiny}' );`, (err, result, fields) => {
 
                 if (err) {
                     reject(err);
                 } else {
-                    resolve(result);
+                    resolve(result.insertId);
                 }
             });
         });
