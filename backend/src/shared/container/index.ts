@@ -18,10 +18,13 @@ import "@modules/restaurants_rating_orders/entities/RestaurantRatingOrder";
 
 import { CategoriesRestaurantsRepository } from "@modules/categories_restaurants/repositories/CategoriesRestaurantsRepository";
 import { UserRepository } from "@modules/users/repositories/UserRepository";
-import { AdressRepository } from "@modules/addresses/repositories/AdressRepository";
 import { SuggestionRepository } from "@modules/suggestions/repositories/SuggestionRepository";
 import { RatingRepository } from "@modules/rating/repositories/RatingRepository";
+import { RestaurantsRepository } from "@modules/restaurants/repositories/RestaurantsRepository";
+import { DrinksRepository } from "@modules/drinks/repositories/DrinksRepository";
+import { AdressRepository } from "@modules/addresses/repositories/AdressRepository";
 import { CoupomRepository } from "@modules/coupons/repositories/CoupomRepository";
+
 
 
 
@@ -31,6 +34,8 @@ const adressRepository = new AdressRepository();
 const suggestionRepository = new SuggestionRepository();
 const ratingRepository = new RatingRepository();
 const coupomRepository = new CoupomRepository();
+const restaurantsRepository = new RestaurantsRepository();
+const drinksRespository = new DrinksRepository();
 
 
 export {
@@ -41,4 +46,6 @@ export {
     ratingRepository,
     coupomRepository,
 
+    restaurantsRepository,
+    drinksRespository,
 };

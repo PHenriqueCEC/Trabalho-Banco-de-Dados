@@ -48,7 +48,7 @@ class CategoriesRestaurantsController {
 
     public index = async (request: Request, response: Response): Promise<Response> => {
 
-        const categoriesRestaurants = await this.categoriesRestaurantsRepository.index();
+        const categoriesRestaurants = await this.categoriesRestaurantsRepository.findAll();
 
         return response.json(categoriesRestaurants);
     }
