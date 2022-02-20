@@ -17,25 +17,46 @@ import "@modules/rating/entities/Rating";
 import "@modules/restaurants_rating_orders/entities/RestaurantRatingOrder";
 
 import { CategoriesRestaurantsRepository } from "@modules/categories_restaurants/repositories/CategoriesRestaurantsRepository";
+import { UserRepository } from "@modules/users/repositories/UserRepository";
+import { SuggestionRepository } from "@modules/suggestions/repositories/SuggestionRepository";
+import { RatingRepository } from "@modules/rating/repositories/RatingRepository";
 import { RestaurantsRepository } from "@modules/restaurants/repositories/RestaurantsRepository";
 import { DrinksRepository } from "@modules/drinks/repositories/DrinksRepository";
+import { AdressRepository } from "@modules/addresses/repositories/AdressRepository";
+import { CoupomRepository } from "@modules/coupons/repositories/CoupomRepository";
+import { OrderRepository } from "@modules/orders/repositories/OrderRepository";
 import { CategoriesDishesRepository } from "@modules/categories_dishes/repositories/CategoriesDishesRepository";
 import { DishesRepository } from "@modules/dishes/repositories/DishesRepository";
+import { DessertsRepository } from "@modules/desserts/repositories/DessertsRepository";
 
 
 
 
 const categoriesRestaurantsRepository = new CategoriesRestaurantsRepository();
+const userRepository = new UserRepository();
+const adressRepository = new AdressRepository();
+const suggestionRepository = new SuggestionRepository();
+const ratingRepository = new RatingRepository();
+const coupomRepository = new CoupomRepository();
 const restaurantsRepository = new RestaurantsRepository();
 const drinksRespository = new DrinksRepository();
+const orderRepository = new OrderRepository();
 const categoriesDishesRepository = new CategoriesDishesRepository();
 const dishesRepository = new DishesRepository();
-
+const dessertsRepository = new DessertsRepository();
 
 export {
     categoriesRestaurantsRepository,
+    userRepository,
+    adressRepository,
+    suggestionRepository,
+    ratingRepository,
+    coupomRepository,
+
     restaurantsRepository,
     drinksRespository,
+    orderRepository,
     categoriesDishesRepository,
     dishesRepository,
+    dessertsRepository,
 };
