@@ -19,6 +19,7 @@ import "@modules/restaurants_rating_orders/entities/RestaurantRatingOrder";
 import { CategoriesRestaurantsRepository } from "@modules/categories_restaurants/repositories/CategoriesRestaurantsRepository";
 import { RestaurantsRepository } from "@modules/restaurants/repositories/RestaurantsRepository";
 import { DrinksRepository } from "@modules/drinks/repositories/DrinksRepository";
+import { CategoriesDishesRepository } from "@modules/categories_dishes/repositories/CategoriesDishesRepository";
 
 
 
@@ -26,10 +27,12 @@ import { DrinksRepository } from "@modules/drinks/repositories/DrinksRepository"
 const categoriesRestaurantsRepository = new CategoriesRestaurantsRepository();
 const restaurantsRepository = new RestaurantsRepository();
 const drinksRespository = new DrinksRepository();
+const categoriesDishesRepository = new CategoriesDishesRepository();
 
 
 export {
     categoriesRestaurantsRepository,
     restaurantsRepository,
     drinksRespository,
+    categoriesDishesRepository,
 };
