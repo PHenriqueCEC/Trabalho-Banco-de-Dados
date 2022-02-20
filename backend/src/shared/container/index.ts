@@ -27,6 +27,7 @@ import { CoupomRepository } from "@modules/coupons/repositories/CoupomRepository
 import { OrderRepository } from "@modules/orders/repositories/OrderRepository";
 import { CategoriesDishesRepository } from "@modules/categories_dishes/repositories/CategoriesDishesRepository";
 import { DishesRepository } from "@modules/dishes/repositories/DishesRepository";
+import { DessertsRepository } from "@modules/desserts/repositories/DessertsRepository";
 
 
 
@@ -42,7 +43,7 @@ const drinksRespository = new DrinksRepository();
 const orderRepository = new OrderRepository();
 const categoriesDishesRepository = new CategoriesDishesRepository();
 const dishesRepository = new DishesRepository();
-
+const dessertsRepository = new DessertsRepository();
 
 export {
     categoriesRestaurantsRepository,
@@ -57,4 +58,5 @@ export {
     orderRepository,
     categoriesDishesRepository,
     dishesRepository,
+    dessertsRepository,
 };
