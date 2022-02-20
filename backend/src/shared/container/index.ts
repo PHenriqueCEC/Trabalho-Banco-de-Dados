@@ -24,6 +24,7 @@ import { RestaurantsRepository } from "@modules/restaurants/repositories/Restaur
 import { DrinksRepository } from "@modules/drinks/repositories/DrinksRepository";
 import { AdressRepository } from "@modules/addresses/repositories/AdressRepository";
 import { CoupomRepository } from "@modules/coupons/repositories/CoupomRepository";
+import { OrderRepository } from "@modules/orders/repositories/OrderRepository"; 
 
 
 
@@ -36,6 +37,7 @@ const ratingRepository = new RatingRepository();
 const coupomRepository = new CoupomRepository();
 const restaurantsRepository = new RestaurantsRepository();
 const drinksRespository = new DrinksRepository();
+const orderRepository = new OrderRepository();
 
 
 export {
@@ -48,4 +50,5 @@ export {
 
     restaurantsRepository,
     drinksRespository,
+    orderRepository,
 };
