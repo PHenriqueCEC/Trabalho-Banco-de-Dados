@@ -5,7 +5,7 @@ interface CreateOrderDTO {
     restaurant_id: number;
     academic_id: number;
     motoboy_id: number;
-    status: string;  
+    status: string;
     delivery_forecast: number;
     origin: string;
     destiny: string;
@@ -16,7 +16,7 @@ interface UpdateOrderDTO {
     restaurant_id: number;
     academic_id: number;
     motoboy_id: number;
-    status: string;  
+    status: string;
     delivery_forecast: number;
     origin: string;
     destiny: string;
@@ -25,8 +25,10 @@ interface UpdateOrderDTO {
 class OrderRepository {
 
 
-    public async create({ restaurant_id, academic_id, motoboy_id, status,
-         delivery_forecast, origin, destiny }: CreateOrderDTO): Promise<void> {
+    public async create({
+        restaurant_id, academic_id, motoboy_id, status,
+        delivery_forecast, origin, destiny,
+    }: CreateOrderDTO): Promise<void> {
 
         return new Promise((resolve, reject) => {
 
@@ -73,7 +75,7 @@ class OrderRepository {
                 if (err) {
                     reject(err);
                 } else {
-                    resolve(result);
+                    resolve(result[0]);
                 }
             });
         });

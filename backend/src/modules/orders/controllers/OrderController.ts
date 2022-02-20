@@ -13,17 +13,19 @@ class OrderController {
 
     public create = async (request: Request, response: Response): Promise<Response> => {
 
-        const { restaurant_id, academic_id, motoboy_id, status,
-            delivery_forecast, origin, destiny } = request.body;
+        const {
+            restaurant_id, academic_id, motoboy_id, status,
+            delivery_forecast, origin, destiny,
+        } = request.body;
 
         await this.orderRepository.create({
             restaurant_id: Number(restaurant_id),
-            academic_id: Number(academic_id), 
-            motoboy_id: Number(motoboy_id), 
+            academic_id: Number(academic_id),
+            motoboy_id: Number(motoboy_id),
             status,
-            delivery_forecast: Number(delivery_forecast), 
-            origin, 
-            destiny
+            delivery_forecast: Number(delivery_forecast),
+            origin,
+            destiny,
         });
 
         return response.status(200).json({});
@@ -52,18 +54,20 @@ class OrderController {
     public update = async (request: Request, response: Response): Promise<Response> => {
 
         const { id } = request.params;
-        const { restaurant_id, academic_id, motoboy_id, status,
-            delivery_forecast, origin, destiny } = request.body;
+        const {
+            restaurant_id, academic_id, motoboy_id, status,
+            delivery_forecast, origin, destiny,
+        } = request.body;
 
         await this.orderRepository.update({
             id: Number(id),
             restaurant_id: Number(restaurant_id),
-            academic_id: Number(academic_id), 
-            motoboy_id: Number(motoboy_id), 
+            academic_id: Number(academic_id),
+            motoboy_id: Number(motoboy_id),
             status,
-            delivery_forecast: Number(delivery_forecast), 
-            origin, 
-            destiny
+            delivery_forecast: Number(delivery_forecast),
+            origin,
+            destiny,
         });
 
         return response.status(200).json({});
