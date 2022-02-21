@@ -31,14 +31,13 @@ class OrderController {
         try {
 
             const {
-                restaurant_id, academic_id, motoboy_id, status,
+                restaurant_id, academic_id, status,
                 delivery_forecast, origin, destiny, dishes, drinks, desserts,
             } = request.body;
 
             const order_id = await this.orderRepository.create({
                 restaurant_id: Number(restaurant_id),
                 academic_id: Number(academic_id),
-                motoboy_id: Number(motoboy_id),
                 status,
                 delivery_forecast: Number(delivery_forecast),
                 origin,
@@ -77,7 +76,9 @@ class OrderController {
             );
 
 
-            return response.status(200).json({});
+            return response.status(200).json({
+                id: order_id,
+            });
 
         } catch (err) {
             return response.status(400).json(err);
@@ -89,10 +90,10 @@ class OrderController {
 
         const { id } = request.params;
 
-        const drink = await this.orderRepository.show(Number(id));
+        const order = await this.orderRepository.show(Number(id));
 
 
-        return response.status(200).json(drink);
+        return response.status(200).json(order);
 
     }
 
@@ -121,6 +122,20 @@ class OrderController {
             delivery_forecast: Number(delivery_forecast),
             origin,
             destiny,
+        });
+
+        return response.status(200).json({});
+
+    }
+
+    public updateStatus = async (request: Request, response: Response): Promise<Response> => {
+
+        const { id } = request.params;
+        const { status } = request.body;
+
+        await this.orderRepository.updateStatus({
+            id: Number(id),
+            status: String(status),
         });
 
         return response.status(200).json({});

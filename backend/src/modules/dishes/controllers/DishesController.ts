@@ -61,7 +61,7 @@ class DishesController {
         return response.status(200).json({});
     }
 
-    public show = async (request: Request, response: Response):Promise<Response> => {
+    public show = async (request: Request, response: Response): Promise<Response> => {
 
         const { id } = request.params;
 
@@ -71,22 +71,22 @@ class DishesController {
 
     }
 
-    public delete = async (request: Request, response: Response):Promise<Response> => {
+    public delete = async (request: Request, response: Response): Promise<Response> => {
 
         const { id } = request.params;
 
         await this.dishesRepository.delete(Number(id));
 
         return response.status(200).json({});
-        
+
     }
 
-    public index = async (request: Request, response: Response):Promise<Response> => {
+    public index = async (request: Request, response: Response): Promise<Response> => {
 
         const dishes = await this.dishesRepository.findAll();
 
         return response.status(200).json(dishes);
-        
+
     }
 
 

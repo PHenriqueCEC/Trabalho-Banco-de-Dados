@@ -5,6 +5,7 @@ import { Restaurant } from "../entities/Restaurant";
 interface CreateRestaurantDTO {
     name: string;
     category_restaurant_id: number;
+    address: string;
 }
 
 
@@ -12,15 +13,16 @@ interface UpdateRestaurantDTO {
     id: number;
     name: string;
     category_restaurant_id: number;
+    address: string;
 }
 
 class RestaurantsRepository {
 
-    public async create({ name, category_restaurant_id }: CreateRestaurantDTO): Promise<any> {
+    public async create({ name, category_restaurant_id, address }: CreateRestaurantDTO): Promise<any> {
 
         return new Promise((resolve, reject) => {
 
-            connection.query(`INSERT INTO restaurants (name, category_restaurant_id) VALUES ('${name}','${category_restaurant_id}');`, (err, result, field) => {
+            connection.query(`INSERT INTO restaurants (name, category_restaurant_id,address) VALUES ('${name}','${category_restaurant_id}','${address}');`, (err, result, field) => {
 
                 if (err) {
                     reject(err);
@@ -31,11 +33,13 @@ class RestaurantsRepository {
 
     };
 
-    public async update({ id, name, category_restaurant_id }: UpdateRestaurantDTO): Promise<any> {
+    public async update({
+ id, name, category_restaurant_id, address, 
+}: UpdateRestaurantDTO): Promise<any> {
 
         return new Promise((resolve, reject) => {
 
-            connection.query(`UPDATE restaurants SET name = '${name}', category_restaurant_id = '${category_restaurant_id}' WHERE id = ${id};`, (err, result, field) => {
+            connection.query(`UPDATE restaurants SET name = '${name}', address = '${address}', category_restaurant_id = '${category_restaurant_id}' WHERE id = ${id};`, (err, result, field) => {
 
 
                 if (err) {
