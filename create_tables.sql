@@ -3,7 +3,7 @@ USE ifoodru;
 
 CREATE TABLE categories_restaurants (  id int AUTO_INCREMENT,  name varchar(20) NOT NULL,  PRIMARY KEY(id));
 
-CREATE TABLE restaurants (  id int AUTO_INCREMENT,  name varchar(30) NOT NULL,  category_restaurant_id int NOT NULL,  PRIMARY KEY(id),  FOREIGN KEY (category_restaurant_id) REFERENCES categories_restaurants(id));
+CREATE TABLE restaurants (  id int AUTO_INCREMENT,  name varchar(30) NOT NULL, address varchar(256) NOT NULL, category_restaurant_id int NOT NULL,  PRIMARY KEY(id),  FOREIGN KEY (category_restaurant_id) REFERENCES categories_restaurants(id));
 
 CREATE TABLE users (  id int AUTO_INCREMENT,  name varchar(100) NOT NULL,  type int NOT NULL,  email varchar(200) UNIQUE NOT NULL,  license_plate varchar(10),  driver_license varchar(10),  password varchar(256) NOT NULL,  PRIMARY KEY (id));
 

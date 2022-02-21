@@ -18,7 +18,9 @@ interface UpdateCoupomDTO {
 
 class CoupomRepository {
 
-    public async create({ name, description, value, status }: CreateCoupomDTO): Promise<any> {
+    public async create({
+ name, description, value, status, 
+}: CreateCoupomDTO): Promise<any> {
 
         return new Promise((resolve, reject) => {
 

@@ -14,13 +14,15 @@ class CoupomController {
 
     public create = async (request: Request, response: Response): Promise<Response> => {
 
-        const { name, description, value, status } = request.body;
+        const {
+ name, description, value, status, 
+} = request.body;
         
         const coupomRestaurant = await this.coupomRepository.create({
             name,
             description, 
             value, 
-            status
+            status,
         });
 
         return response.status(201).json(coupomRestaurant);
