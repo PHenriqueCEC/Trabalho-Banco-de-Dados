@@ -28,13 +28,13 @@ interface UpdateAdressDTO {
 
 class AdressRepository {
 
-    public async create({ user_id, zip_code, public_place, district, number, complement, city, state }: CreateAdressDTO): Promise<any> {
+    public async create({
+        user_id, zip_code, public_place, district, number, complement, city, state,
+    }: CreateAdressDTO): Promise<any> {
 
         return new Promise((resolve, reject) => {
 
-            connection.query(`INSERT INTO adresses (user_id, zip_code, public_place, district,
-            number, complement, city, state) VALUES ('${user_id}', '${zip_code}', '${public_place}'
-            '${district}','${number}', '${complement}', '${city}', '${state}');`, (err, result, field) => {
+            connection.query(`INSERT INTO addresses (user_id, zip_code, public_place, district, number, complement, city, state) VALUES (${user_id}, '${zip_code}', '${public_place}', '${district}', ${number} , '${complement}', '${city}', '${state}' );`, (err, result, field) => {
 
                 if (err) {
                     reject(err);
@@ -45,8 +45,10 @@ class AdressRepository {
 
     };
 
-    public async update({ id, user_id, zip_code, public_place, district, number,
-        complement, city, state }: UpdateAdressDTO): Promise<any> {
+    public async update({
+        id, user_id, zip_code, public_place, district, number,
+        complement, city, state,
+    }: UpdateAdressDTO): Promise<any> {
 
         return new Promise((resolve, reject) => {
 

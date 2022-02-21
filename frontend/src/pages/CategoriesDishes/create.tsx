@@ -4,18 +4,18 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { api } from "../../services/api";
 
-export function CreateCategoryRestaurantPage() {
+export function CreateCategoryDishPage() {
   const { register, handleSubmit } = useForm();
 
   const history = useNavigate()
 
   const handleCreateCategoryRestaurant = useCallback(async (formValue) => {
     api
-      .post("categoriesRestaurants", {
+      .post("categoriesDishes", {
         name: formValue.name,
       })
       .then((response) => {
-        history("/")
+        history("/");
       })
       .catch((err) => {
         console.log(err);
@@ -24,7 +24,7 @@ export function CreateCategoryRestaurantPage() {
 
   return (
     <Flex flexDirection="column" alignItems="center" paddingTop="5">
-      Cadastrando Categoria
+      Cadastrando Categoria de Prato
       <Flex
         as="form"
         onSubmit={handleSubmit(handleCreateCategoryRestaurant)}

@@ -12,11 +12,12 @@ class RestaurantsController{
 
     public create = async (request: Request, response: Response):Promise<Response> => {
 
-        const { name, category_restaurant_id } = request.body;
+        const { name, category_restaurant_id, address } = request.body;
 
         await this.restaurantsRepository.create({
             name,
             category_restaurant_id,
+            address,
         });
 
         return response.status(200).json({});
@@ -25,12 +26,13 @@ class RestaurantsController{
     public update = async (request: Request, response: Response):Promise<Response> => {
 
         const { id } = request.params;
-        const { name, category_restaurant_id } = request.body;
+        const { name, category_restaurant_id, address } = request.body;
 
         await this.restaurantsRepository.update({
             id: Number(id),
             name,
             category_restaurant_id,
+            address,
         });
 
         return response.status(200).json();

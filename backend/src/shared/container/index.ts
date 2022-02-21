@@ -28,6 +28,9 @@ import { OrderRepository } from "@modules/orders/repositories/OrderRepository";
 import { CategoriesDishesRepository } from "@modules/categories_dishes/repositories/CategoriesDishesRepository";
 import { DishesRepository } from "@modules/dishes/repositories/DishesRepository";
 import { DessertsRepository } from "@modules/desserts/repositories/DessertsRepository";
+import { OrdersDessertsRepository } from "@modules/orders_desserts/repositories/OrdersDessertsRepository";
+import { OrdersDishesRepository } from "@modules/orders_dishes/repositories/OrderDishesRepository";
+import { OrdersDrinksRepository } from "@modules/orders_drinks/repositories/OrdersDrinksRepository";
 
 
 
@@ -44,6 +47,9 @@ const orderRepository = new OrderRepository();
 const categoriesDishesRepository = new CategoriesDishesRepository();
 const dishesRepository = new DishesRepository();
 const dessertsRepository = new DessertsRepository();
+const ordersDessertsRepository = new OrdersDessertsRepository();
+const ordersDishesRepository = new OrdersDishesRepository();
+const ordersDrinksRepository = new OrdersDrinksRepository();
 
 export {
     categoriesRestaurantsRepository,
@@ -52,11 +58,13 @@ export {
     suggestionRepository,
     ratingRepository,
     coupomRepository,
-
     restaurantsRepository,
     drinksRespository,
     orderRepository,
     categoriesDishesRepository,
     dishesRepository,
     dessertsRepository,
+    ordersDessertsRepository,
+    ordersDishesRepository,
+    ordersDrinksRepository,
 };
